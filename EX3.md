@@ -3,7 +3,8 @@
 
 ## Create employee Table
 ```sql
-CREATE TABLE EMP (EMPNO NUMBER(4) PRIMARY KEY,ENAME VARCHAR2(10),JOB VARCHAR2(9),MGR NUMBER(4),HIREDATE DATE,SAL NUMBER(7,2),COMM NUMBER(7,2),DEPTNO NUMBER(2));
+CREATE TABLE EMP (EMPNO NUMBER(4) PRIMARY KEY,ENAME VARCHAR2(10),JOB VARCHAR2(9),
+MGR NUMBER(4),HIREDATE DATE,SAL NUMBER(7,2),COMM NUMBER(7,2),DEPTNO NUMBER(2));
 ```
 ## Insert the values
 ```sql
@@ -67,47 +68,60 @@ INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (40, 'OPERATIONS', 'BOSTON');
 
 ### Q1) List the name of the employees whose salary is greater than that of employee with empno 7566.
 
-
 ### QUERY:
-
-
+```sql
+select ename from emp where salary > (select salary from emp where empno=7566);
+```
 ### OUTPUT:
+![out](3a.png)
 
 ### Q2) List the ename,job,sal of the employee who get minimum salary in the company.
 
 ### QUERY:
-
+```sql
+ SELECT ename, job, sal FROM emp WHERE sal = (SELECT min(sal) FROM emp);
+```
 
 ### OUTPUT:
+![out](3b.png)
 
 ### Q3) List ename, job of the employees who work in deptno 10 and his/her job is any one of the job in the department ‘SALES’.
 
 ### QUERY:
-
-
+```sql
+SELECT ename, job FROM emp WHERE deptno = 10 AND job IN (SELECT job FROM emp WHERE job = 'SALES');
+```
 ### OUTPUT:
-
+![out](3c.png)
 
 ### Q4) Create a view empv5 (for the table emp) that contains empno, ename, job of the employees who work in dept 10.
 
 ### QUERY:
-
+```sql
+create view empv5 as select ename,job,deptno from emp where deptno=10;
+```
 
 ### OUTPUT:
+![out](3d.png)
 
 ### Q5) Create a view with column aliases empv30 that contains empno, ename, sal of the employees who work in dept 30. Also display the contents of the view.
 
 ### QUERY:
-
-
+```sql
+create  view empv30 as select empno as "eno" , ename as "empname" , sal as "esal" from emp where deptno = 30;
+```
 ### OUTPUT:
+![out](3e.png)
 
 ### Q6) Update the view empv5 by increasing 10% salary of the employees who work as ‘CLERK’. Also confirm the modifications in emp table
 
 ### QUERY:
-
+```sql
+update empv5 set sal=sal*1.1 where job='CLERK';
+```
 
 ### OUTPUT:
+![out](3f.png)
 
 ## Create a Customer1 Table
 ```sql
@@ -140,12 +154,13 @@ INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5003, 'Lauson
 ### Q7) Write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
 
 ### QUERY:
-
-
+```sql
+SELECT salesman1.name AS "Salesman", customer1.cust_name AS "Customer Name", salesman1.city AS "City" FROM salesman1 INNER JOIN customer1 ON salesman1.city = customer1.city;
+```
 ### OUTPUT:
+![out](3g.png)
 
 ### Q8) Write a SQL query to find salespeople who received commissions of more than 13 percent from the company. Return Customer Name, customer city, Salesman, commission.
-
 
 ### QUERY:
 
@@ -162,6 +177,6 @@ INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5003, 'Lauson
 ### Q10) Perform Left and right join on both tables
 
 ### QUERY:
-
+```sql
 
 ### OUTPUT:
