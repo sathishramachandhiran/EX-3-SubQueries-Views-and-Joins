@@ -1,5 +1,7 @@
 # EX 3 SubQueries, Views and Joins 
 
+## AIM:
+To create a database and to execute Subqueries,Views and Joins using SQL.
 
 ## Create employee Table
 ```sql
@@ -155,7 +157,8 @@ INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5003, 'Lauson
 
 ### QUERY:
 ```sql
-SELECT salesman1.name AS "Salesman", customer1.cust_name AS "Customer Name", salesman1.city AS "City" FROM salesman1 INNER JOIN customer1 ON salesman1.city = customer1.city;
+SELECT salesman1.name AS "Salesman", customer1.cust_name AS "Customer Name", salesman1.city AS "City"
+FROM salesman1 INNER JOIN customer1 ON salesman1.city = customer1.city;
 ```
 ### OUTPUT:
 ![out](3g.png)
@@ -163,20 +166,42 @@ SELECT salesman1.name AS "Salesman", customer1.cust_name AS "Customer Name", sal
 ### Q8) Write a SQL query to find salespeople who received commissions of more than 13 percent from the company. Return Customer Name, customer city, Salesman, commission.
 
 ### QUERY:
-
-
+```sql
+SELECT customer1.cust_name AS "Customer Name", customer1.city AS "Customer City",salesman1.name AS "SALESMAN",
+salesman1.commission AS "Commission" FROM salesman1 INNER JOIN customer1 ON salesman1.salesman_id =
+customer1.salesman_id WHERE salesman1.commission > 0.13;
+```
 ### OUTPUT:
+![out](3h.png)
 
 ### Q9) Perform Natural join on both tables
 
 ### QUERY:
-
-
+```sql
+select * from customer1 natural join salesman1 ;
+```
 ### OUTPUT:
+![out](3i.png)
 
 ### Q10) Perform Left and right join on both tables
 
 ### QUERY:
 ```sql
+select * from customer1 left join salesman1 on salesman1.salesman_id = customer1.salesman_id;
+select * from customer1 right join salesman1 on salesman1.salesman_id = customer1.salesman_id;
+```
 
 ### OUTPUT:
+#### **LEFT JOIN:**
+![out](3j.png)
+#### **RIGHT JOIN:**
+![out](3k.png)
+
+```
+SUBMITTED BY :
+NAME : SATHISH R
+REGNO: 212222100048
+```
+## RESULT :
+Thus, the Employee, Salesman and Customer database is created and Subqueries, Views and Joins are executed using SQL Successfully . 
+
