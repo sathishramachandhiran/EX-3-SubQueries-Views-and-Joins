@@ -1,6 +1,6 @@
 # EX 3 SubQueries, Views and Joins 
 
-## DATE: 
+## DATE: 18/08/2023
 
 ## AIM: To create a database and to execute Subqueries,Views and Joins using SQL.
 
